@@ -1,11 +1,11 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import "../../globals.css"
+import "../../../globals.css"
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
-import { GET_ALL_ADD_TO_CART_PRODUCT, REMOVE_PRODUCT_FROM_CART, UPDATE_QUANTITY_OF_PRODUCT_IN_CART } from '../../../apollo/client/query';
-import { DELETE_USERS_CART } from "../../../apollo/client/mutation"
+import { GET_ALL_ADD_TO_CART_PRODUCT, REMOVE_PRODUCT_FROM_CART, UPDATE_QUANTITY_OF_PRODUCT_IN_CART } from '../../../../apollo/client/query';
+import { DELETE_USERS_CART } from "../../../../apollo/client/mutation"
 import { useRouter } from 'next/navigation';
-import Button from '../../_components/CommonButton';
+import Button from '../../../_components/CommonButton';
 
 const page = () => {
     const [productsFromCart, setProductsFromCart] = useState()
@@ -188,7 +188,7 @@ const page = () => {
                 <Button value="continue Shopping" allFunction={continueToShopping} />
                 <Button value="clear Cart" allFunction={clearCart} />
             </div>
-            <div className='mt-10 mb-5 pl-5 ml-auto w-[30%] border border-gray-200 text-center p-2'>
+            <div className='mt-10 mb-5 px-5 ml-auto w-[30%] border border-gray-200 text-center p-2'>
                 <div className='border-b border-b-gray-200 pb-4'>
                     <div className="flex text-start items-center py-2">
                         <p className='text-base font-bold w-1/2  '>SUBTOTAL :</p>

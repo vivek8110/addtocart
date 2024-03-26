@@ -29,9 +29,16 @@ const productsTypeDefs = gql`
     shipping: Boolean
     inStock: Boolean
   }
+  input GetAllProductsInput {
+    categories: ID
+    brands: ID
+    colors: ID
+    search: String
+    shipping: Boolean
+  }
   type Query {
-    getAllProducts: [product]
     getProductById(id: ID!): product
+    getAllProducts(input: GetAllProductsInput): [product]
   }
   type Mutation {
     createProduct(input: createProductInput): product

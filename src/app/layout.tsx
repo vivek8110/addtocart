@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "./_components/navbar/Navbar";
+import Footer from "./_components/footer/Footer";
 
 export default function RootLayout({
   children,
@@ -20,11 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ApolloProvider client={client}>
-          <Navbar/>
+          {/* <Navbar/> */}
           {/* <p><Link href="/"> Home</Link> <Link href={`/${pathName?.split('/')[1]}`}> {pathName}</Link></p> */}
           {children}
         <ToastContainer/>
-        
+          {/* <Footer/> */}
         </ApolloProvider>
       </body>
     </html>

@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
 const card = ({ product }) => {
-  console.log("🚀 ~ file: ProductCard.jsx:4 ~ card ~ product:", product)
   return (
 
     <>

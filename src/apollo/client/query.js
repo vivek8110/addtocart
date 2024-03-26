@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_ALL_PRODUCTS = gql`
-  query GetAllProducts {
-    getAllProducts {
+  query GetAllProducts($input: GetAllProductsInput) {
+    getAllProducts(input: $input) {
       id
       name
       price
@@ -10,21 +10,21 @@ export const GET_ALL_PRODUCTS = gql`
       description
       stock
       sku
-
-      shipping
       brandName {
         id
         name
       }
       colors {
-        id
         hexCode
+        id
         name
       }
       category {
         id
         name
       }
+      shipping
+      inStock
     }
   }
 `;

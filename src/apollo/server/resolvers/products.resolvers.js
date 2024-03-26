@@ -4,15 +4,46 @@ export const productsResolver = {
   Query: {
     getAllProducts: async (parent, args, context) => {
       try {
+        if (args.input) {
+          console.log(
+            "🚀 ~ file: products.resolvers.js:8 ~ getAllProducts: ~ args.input:",
+            args.input
+          );
+          const { categories, brands, colors, search, shipping } = args.input;
+
+          let query = {};
+
+          if (categories && categories.length > 0) {
+            query.category = categories;
+          }
+          if (brands && brands.length > 0) {
+            query.brandName = brands;
+          }
+          if (colors && colors.length > 0) {
+            query.colors = colors;
+          }
+          if (search) {
+            query.name = { $regex: "^" + search, $options: "i" };
+          }
+          if (shipping) {
+            query.shipping = { $eq: shipping };
+          }
+          console.log("querydsfgsdfg", query);
+
+          const products = await product
+            .find(query)
+            .populate({ path: "brandName", select: "name" })
+            .populate({ path: "category", select: "name" })
+            .populate({ path: "colors", select: " name hexCode" });
+
+          return products;
+        }
         const products = await product
           .find()
           .populate({ path: "brandName", select: "name" })
           .populate({ path: "category", select: "name" })
           .populate({ path: "colors", select: " name hexCode" });
-        console.log(
-          "🚀 ~ file: products.resolvers.js:12 ~ getAllProducts: ~ products:",
-          products
-        );
+
         // .populate({ path: "color", select: "name hexCode" });
 
         return products;

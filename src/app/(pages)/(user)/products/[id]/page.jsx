@@ -2,10 +2,10 @@
 "use client"
 import { useMutation, useQuery } from '@apollo/client'
 import React, { useEffect, useState } from 'react'
-import { ADD_PRODUCT_TO_CART, GET_PRODUCT_BY_ID } from '../../../../apollo/client/query'
-import "../../../globals.css"
+import { ADD_PRODUCT_TO_CART, GET_PRODUCT_BY_ID } from '../../../../../apollo/client/query'
+import "../../../../globals.css"
 import { FaCheck } from 'react-icons/fa';
-import CommonButton from "../../../_components/CommonButton"
+import CommonButton from "../../../../_components/CommonButton"
 import { useRouter } from 'next/navigation'
 
 const page = ({ params }) => {
@@ -82,7 +82,7 @@ const page = ({ params }) => {
         setImage(product?.image[0])
     }, [data])
 
-    if (loading || !product) return <div>Loading...</div>
+    if (loading || !product) return
     return (
         <>
             <div className="container md:container mx-auto pt-52">
